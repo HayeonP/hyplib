@@ -11,14 +11,15 @@ namespace PHY {
 
 	class TextLabelEditor {
 	public:
-	//private:
+		//private:
 		string filepath_;
 		// input file path
 		char token_;
 		// char data classifier of each components.
 		// Deafult is ' '
-		vector< nodelist > node_line_list_;
-		vector< string > str_line_list_;
+		int line_num_;
+		vector< nodelist > node_data_;
+		vector< string > str_data_;
 
 	public:
 		TextLabelEditor(string filepath);
@@ -29,13 +30,14 @@ namespace PHY {
 		nodelist string_line_to_node_line(string data);
 		void set_line(int location, string data);
 		void set_line(int location, nodelist data);
-		
 		string get_str_line(int line_num);
 		nodelist get_node_line(int line_num);
+		vector<string> get_str_data();
+		vector<nodelist> get_node_data();
 		void print_line(int line_num);
 		void print_data();
 		void write_data(vector<string> data);
 		void write_data(vector<nodelist> data);
-		
+
 	};
 }

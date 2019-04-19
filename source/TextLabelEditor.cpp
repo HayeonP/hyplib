@@ -8,25 +8,34 @@ namespace PHY {
 	TextLabelEditor::TextLabelEditor(string filepath, char token)
 		: filepath_(filepath), token_(token)
 	{
+		line_num_ = 0;
 		ifstream in_stream(filepath_);
-		
+
 		while (!in_stream.eof()) {
 			string line;
 			getline(in_stream, line);
-			str_line_list_.push_back(line);
+			if (line.empty()) continue;
+
+			str_data_.push_back(line);
 
 			string node;
 			nodelist node_list;
 			istringstream node_stream(line);
-			while (getline(node_stream, node, token_))
+			while (getline(node_stream, node, token_)) {
 				node_list.push_back(node);
-			node_line_list_.push_back(node_list);
+			}
+
+
+			node_data_.push_back(node_list);
+
+			line_num_++;
+
 		}
-		
+
 		in_stream.close();
 	}
 
-	string TextLabelEditor::node_line_to_string_line(nodelist data){
+	string TextLabelEditor::node_line_to_string_line(nodelist data) {
 		string str_data;
 		for (string it : data) {
 			str_data += it;
@@ -42,43 +51,55 @@ namespace PHY {
 		istringstream node_stream(data);
 		while (getline(node_stream, node, token_))
 			node_list.push_back(node);
-		
+
 		return node_list;
 	}
 
 	void TextLabelEditor::set_line(int location, string data) {
-		str_line_list_[location] = data;
+		str_data_[location] = data;
 		nodelist node_line = string_line_to_node_line(data);
-		node_line_list_[location] = node_line;
+		node_data_[location] = node_line;
 		string str_line = node_line_to_string_line(node_line);
 	}
 
 	void TextLabelEditor::set_line(int location, nodelist data) {
-		node_line_list_[location] = data;
+		node_data_[location] = data;
 		string str_line = node_line_to_string_line(data);
-		str_line_list_[location] = str_line;
+		str_data_[location] = str_line;
 		nodelist node_line = string_line_to_node_line(str_line);
-		
+
 	}
 
 	string TextLabelEditor::get_str_line(int line_num) {
-		return str_line_list_[line_num];
+		if (str_data_.empty()) return string();
+		return str_data_[line_num];
 	}
 
 	nodelist TextLabelEditor::get_node_line(int line_num) {
-		return node_line_list_[line_num];
+		if (node_data_.empty()) return nodelist();
+		return node_data_[line_num];
+	}
+
+	vector<string> TextLabelEditor::get_str_data() {
+		if (str_data_.empty()) return vector<string>();
+		return str_data_;
+	}
+
+	vector<nodelist> TextLabelEditor::get_node_data() {
+		if (node_data_.empty()) return vector<nodelist>();
+		return node_data_;
 	}
 
 	void TextLabelEditor::print_line(int line_num) {
-		cout << str_line_list_[line_num] << endl;
+		cout << str_data_[line_num] << endl;
 	}
 
 	void TextLabelEditor::print_data() {
-		for (string it : str_line_list_)
+		for (string it : str_data_)
 			cout << it << endl;
 		cout << endl;
 
-		for (nodelist it1 : node_line_list_) {
+		for (nodelist it1 : node_data_) {
 			for (string it2 : it1) {
 				cout << it2 << " ";
 			}

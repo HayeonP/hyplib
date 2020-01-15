@@ -3,6 +3,7 @@ project(cpp_test VERSION 1.0.0)
 
 add_executable(CsvLoggerTest
     CsvLogger.h
+	CsvLogger.cpp
     main.cpp
 )
 target_link_libraries(CsvLoggerTest

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hypark/DL_opt/cmake/say-hello/src/say-hello/hello.cpp
+iostream
+-
+hello.hpp
+/home/hypark/DL_opt/cmake/say-hello/src/say-hello/hello.hpp
+
+/home/hypark/DL_opt/cmake/say-hello/src/say-hello/hello.hpp
+iostream
+-
+

@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/hypark/DL_opt/cmake/build/say-hello",
+  "command": "/usr/bin/g++-7  -DVERSION=3 -I/home/hypark/DL_opt/cmake/say-hello/src/say-hello  -g   -o CMakeFiles/say-hello.dir/src/say-hello/hello.cpp.o -c /home/hypark/DL_opt/cmake/say-hello/src/say-hello/hello.cpp",
+  "file": "/home/hypark/DL_opt/cmake/say-hello/src/say-hello/hello.cpp"
+},
+{
+  "directory": "/home/hypark/DL_opt/cmake/build/hello-exe",
+  "command": "/usr/bin/g++-7  -DVERSION=3 -I/home/hypark/DL_opt/cmake/say-hello/src/say-hello  -g   -o CMakeFiles/cmake_tutorial.dir/main.cpp.o -c /home/hypark/DL_opt/cmake/hello-exe/main.cpp",
+  "file": "/home/hypark/DL_opt/cmake/hello-exe/main.cpp"
+}
+]

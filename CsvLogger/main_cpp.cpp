@@ -1,4 +1,4 @@
-#include "CsvLogger.h"
+#include "CsvLogger.hpp"
 
 int main(int argc, char* argv[]){
     std::vector<std::string> indices;
